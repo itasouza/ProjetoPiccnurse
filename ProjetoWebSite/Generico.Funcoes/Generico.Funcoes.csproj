@@ -45,8 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidaCaracter.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BancoDados\" />
+    <Content Include="BancoDados\banco.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
