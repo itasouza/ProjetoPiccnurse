@@ -1,40 +1,593 @@
 ﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="pt-br">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+@RenderPage("_Header.cshtml")
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="#">
+                        <img src="~/Content/img/logo-interno.png" alt="logo" class="logo-default" />
+                    </a>
+                    <div class="menu-toggler sidebar-toggler">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <!-- END TODO DROPDOWN -->
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="~/Content/img/avatar.png" />
+                                <span class="username username-hide-on-mobile"> Administrador </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>Meu Perfil
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-key"></i> Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                        <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <i class="icon-logout"></i>
+                            </a>
+                        </li>
+                        <!-- END QUICK SIDEBAR TOGGLER -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+                        <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                        <li class="sidebar-toggler-wrapper hide">
+                            <div class="sidebar-toggler">
+                                <span></span>
+                            </div>
+                        </li>
+                        <!-- END SIDEBAR TOGGLER BUTTON -->
+                        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+                        <li class="nav-item start active open">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-bar-chart"></i>
+                                <span class="title">Processo</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-diamond"></i>
+                                        <span class="title">Cadastro de Máteria</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-docs"></i>
+                                        <span class="title">Documentos</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> NF </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> DI </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-calendar"></i>
+                                        <span class="title">Chegada Maritima</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-envelope"></i>
+                                        <span class="title">DI Distribuição</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-info"></i>
+                                        <span class="title">Chegada Ferroviária</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Alt. Carregamento</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-folder"></i>
+                                        <span class="title">Recepção de Veiculo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-diamond"></i>
+                                <span class="title">Cadastro</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-docs"></i>
+                                        <span class="title">Veículos</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipo de Veículo </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-check"></i>
+                                        <span class="title">Empresas</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Clientes </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Fornecedores </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Transportadoras </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Exportador </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Importador </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Consignatário </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Armador </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Representante Legal </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipo de Empresa </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-check"></i>
+                                        <span class="title">Pessoas</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Motoristas </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Usuários </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Pessoa Fisica </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Pessoa Juridica </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-layers"></i>
+                                        <span class="title">Local armazanagem</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-magnifier"></i>
+                                        <span class="title">Mensagens</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Mensagem </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipos de mensagem </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-camera"></i>
+                                        <span class="title">Justificativas</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipos de justificativa </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Justificativas </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-folder"></i>
+                                        <span class="title">Produtos</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Produto </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Unidade de medida </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-pointer"></i>
+                                        <span class="title">Perfis de acesso</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Perfil de acesso </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Menu </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link ">Formulários </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-pointer"></i>
+                                        <span class="title">Lista negra</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Lista negra </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipo de Lista negra </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-layers"></i>
+                                        <span class="title">Departamentos</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-check"></i>
+                                        <span class="title">Tag</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-call-end"></i>
+                                        <span class="title">Unidade de Negócio</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-wallet"></i>
+                                        <span class="title">Guindastes</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-pointer"></i>
+                                        <span class="title">Ocorrências</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Ocorrências </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> Tipos de Ocorrências </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Local de Carregamento</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-user-female"></i>
+                                        <span class="title">Tipo carregamento</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-graph"></i>
+                                        <span class="title">Moeda</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-puzzle"></i>
+                                <span class="title">Consultas</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-bell"></i>
+                                        <span class="title">Ac. de Pesagem</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-home"></i>
+                                        <span class="title">Posição de veículos</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-settings"></i>
+                                        <span class="title">Interface MIC</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-arrow-up"></i>
+                                        <span class="title">Ac. Logístico</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">Configurações</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-basket"></i>
+                                        <span class="title">Localidades</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-lock-open"></i>
+                                        <span class="title">Fluxo</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-settings"></i>
+                                        <span class="title">Configuração Local</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-tag"></i>
+                                        <span class="title">Etapas</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-notebook"></i>
+                                        <span class="title">Dispositivo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-bulb"></i>
+                                <span class="title">Impressão</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-speech"></i>
+                                        <span class="title">Rep. de Comprovantes</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Relatórios</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> .... </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="#" class="nav-link "> .... </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-notebook"></i>
+                                        <span class="title">Gerar Arquivo APPA</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-briefcase"></i>
+                                <span class="title">Avançado</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Troca de Tag</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Pesagem Assitida</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Processos Finalizados</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Alteração de Senha</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Simulação de Pesagem</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Carta de Correção</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="#" class="nav-link ">
+                                        <i class="icon-rocket"></i>
+                                        <span class="title">Manutenção de OS</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
             </div>
+            <!-- END SIDEBAR -->
+
+
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    @RenderBody()
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+
+
+
+        </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2019 &copy;Piccnurse Admin
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
         </div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <!-- END FOOTER -->
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderPage("_Footer.cshtml")
+
 </body>
 </html>

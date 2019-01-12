@@ -5,22 +5,23 @@ namespace Generico.Funcoes
 {
    public class EnviarEmail
     {
-        public string Email(string mensagem, string nome, string email)
+  
+
+
+        public string Email(string nome, string email, string mensagem)
         {
-            string recnome = nome;
-            string recemail = email;
-            string recmensagem = mensagem;
 
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
-            client.Host = "smtp.gmail.com";
-            client.EnableSsl = true;
-            client.Credentials = new System.Net.NetworkCredential("itamarcontatosuporte@gmail.com", "");
+            client.Host = "mail.top3host.com.br";
+            client.EnableSsl = false;
+            client.Credentials = new System.Net.NetworkCredential("Contatos@tasdigital.com.br", "tascontato123##");
             MailMessage mail = new MailMessage();
-            mail.Sender = new System.Net.Mail.MailAddress("itamarcontatosuporte@gmail.com", "ENVIADOR");
-            mail.From = new MailAddress(email, "Recuperação de Senha");
-            mail.To.Add(new MailAddress(email));
+            mail.Sender = new System.Net.Mail.MailAddress("Contatos@tasdigital.com.br", "Mensagem Enviada Pelo Site Piccnurse");
+            mail.From = new MailAddress("Contatos@tasdigital.com.br", "Mensagem Enviada Pelo Site Piccnurse");
+            mail.To.Add(new MailAddress("itasouza@yahoo.com.br", "Mensagem Enviada Pelo Site Piccnurse"));
+            mail.CC.Add("itasouza@yahoo.com.br");
             mail.Subject = "Recuperação de Senha do site!";
-            mail.Body = recmensagem;
+            mail.Body = mensagem; 
             mail.IsBodyHtml = true;
             mail.Priority = MailPriority.High;
             try
@@ -38,6 +39,8 @@ namespace Generico.Funcoes
 
             return "OK";
         }
-  
+
+
+
     }
 }

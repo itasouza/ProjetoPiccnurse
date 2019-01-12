@@ -80,9 +80,9 @@ namespace ProjetoWebSite.Controllers
                     string Senha = retorno.SenhaUsuario;
 
                     var enviaremail = new EnviarEmail();
-                    string Mensagem = string.Format(" Está é a sua senha atual : {0} e seu login: {1}", Senha, Login);
-
+                    string Mensagem = " Mensagem do site:<br/> Nome:  " + NomeContato + "<br/> Login : " + Login + " <br/> Senha : " + Senha;
                     string resposta =  enviaremail.Email(Mensagem,NomeContato, EmailContato);
+
                     if (resposta == "OK")
                     {
                         TempData["msg"] = "E-mail enviado com sucesso!";
